@@ -1,13 +1,13 @@
-<html>
-    <head>
-        <title><?= $titulo ?></title>
-    </head>
-    <body>
-        <label>Login:</label><input type="text" id="login">
-        <br>
-        <label>Senha:</label><input type="password" id="senha">
-        <br>
-        <button>Enviar</button>
-        <?= $qualquerCoisa ?>
-    </body>
-</html>
+<?
+echo form_open('login/doLogin');
+?>
+<label for="login">Login</label>
+<input type="text" name="login" value="<?= set_value('login') ?>" />
+<br />
+<label for="senha">Senha</label>
+<input type="password" name="senha" />
+<br />
+<?
+echo form_submit('ok','Enviar');
+echo form_close();
+?>
