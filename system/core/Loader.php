@@ -78,7 +78,7 @@ class CI_Loader {
 	 * @var array
 	 * @access protected
 	 */
-	protected $_ci_cached_vars		= array();
+	public $_ci_cached_vars		= array();
 	/**
 	 * List of loaded classes
 	 *
@@ -295,6 +295,7 @@ class CI_Loader {
 			{
 				load_class('Model', 'core');
 			}
+                        load_class('MY_Model', 'core','');
 
 			require_once($mod_path.'models/'.$path.$model.'.php');
 
@@ -479,6 +480,19 @@ class CI_Loader {
 	{
 		return isset($this->_ci_cached_vars[$key]) ? $this->_ci_cached_vars[$key] : NULL;
 	}
+        
+        public function trataValorInput($sKey,$bRecuperaValorCampo = true) {
+            if ($this->get_var('update')) {
+                $aValor = $this->get_var('info');
+                if (count($aValor) > 0) {
+                    return isset($aValor[0]->$sKey) ? $aValor[0]->$sKey : null ;
+                } elseif ($bRecuperaValorCampo) {
+                    return set_value($sKey);
+                }
+                return null;
+            }
+            
+        }
 
 	// --------------------------------------------------------------------
 

@@ -683,7 +683,6 @@ if ( ! function_exists('set_value'))
 
 			return form_prep($_POST[$field], $field);
 		}
-
 		return form_prep($OBJ->set_value($field, $default), $field);
 	}
 }

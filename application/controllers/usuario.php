@@ -9,21 +9,21 @@ class Usuario extends CI_Controller {
     public function __construct() {
         parent::__construct();
     }
-    
+
     public function index() {
         $this->consulta();
     }
     
     public function cadastrar() {
         // Vamos buscar os campos do formulario
-        $aDados = Array('usulogin'    => $this->input->post('login'),
-                        'usunome'     => $this->input->post('nome'),
-                        'ususenha'    => md5($this->input->post('senha')),
-                        'usumail'     => $this->input->post('email'),
-                        'usulembrete' => $this->input->post('lembrete'));
+        $aDados = Array('usulogin'    => $this->input->post('usulogin'),
+                        'usunome'     => $this->input->post('usunome'),
+                        'ususenha'    => md5($this->input->post('ususenha')),
+                        'usumail'     => $this->input->post('usumail'),
+                        'usulembrete' => $this->input->post('usulembrete'));
         // Vamos carregar o modelo
         $this->load->model('ModelUsuario');
-        if ($this->ModelUsuario->inserir($aDados)) {
+        if ($this->ModelUsuario->insere($aDados)) {
             redirect(base_url().'index.php/usuario','refresh');
         } else {
             echo 'Ferrou';
@@ -42,7 +42,7 @@ class Usuario extends CI_Controller {
                               $oRes->usulogin,
                               $oRes->usunome,
                               $oRes->usumail,
-                              anchor('usuario/edit'.$oRes->usucodigo,'Alterar'));
+                              anchor('usuario/edit/'.$oRes->usucodigo,'Alterar'));
             $this->table->add_row($aRetorno);
         }
         
@@ -54,7 +54,32 @@ class Usuario extends CI_Controller {
     }
     
     public function add() {
-        $this->load->view('ManutencaoUsuario');
+        $this->criaTela();
+    }
+    
+    public function criaTela($sMetodo = null,$aParam = array()) {
+        $aParam['acao']   = 'cadastrar';
+        switch ($sMetodo) {
+            case 'altera':
+                $aParam['update'] = true;
+                $aParam['acao']   = 'altera';
+            break;
+            case 'visualizar':
+                $aParam['visualizacao'] = true;
+            break;
+        }
+        
+        $this->load->view('ManutencaoUsuario',$aParam);
+    }
+    
+    public function edit() {
+        $iId = $this->uri->segment(3);
+        $this->load->model('ModelUsuario');
+        $aDados = Array('info' => $this->ModelUsuario->getUser($iId));
+        $this->criaTela('altera', $aDados);
+    }
+    
+    public function altera() {
+        
     }
 }
-?>

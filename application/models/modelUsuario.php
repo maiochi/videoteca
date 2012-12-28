@@ -4,14 +4,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-class ModelUsuario extends CI_Model {
+class ModelUsuario extends MY_Model{
     
     public function __construct() {
+        $this->tabela = 'tbusuario';
         parent::__construct();
-    }
-    
-    public function inserir($aDados) {
-        return $this->db->insert('tbusuario',$aDados);
     }
     
     /*
@@ -26,5 +23,9 @@ class ModelUsuario extends CI_Model {
                    from tbusuario
                order by usucodigo';
         return $this->db->query($sSql);
+    }
+    
+    public function getUser($iId) {
+        return $this->db->get_where('tbusuario', Array('usucodigo' => $iId))->result();
     }
 }
