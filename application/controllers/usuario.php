@@ -42,7 +42,8 @@ class Usuario extends CI_Controller {
                               $oRes->usulogin,
                               $oRes->usunome,
                               $oRes->usumail,
-                              anchor('usuario/edit/'.$oRes->usucodigo,'Alterar'));
+                              anchor('usuario/edit/'.$oRes->usucodigo,'Alterar'),
+                              anchor('usuario/exclui/'.$oRes->usucodigo,'[X]'));
             $this->table->add_row($aRetorno);
         }
         
@@ -80,6 +81,17 @@ class Usuario extends CI_Controller {
     }
     
     public function altera() {
-        
+        $this->load->model('ModelUsuario');
+        if ($this->ModelUsuario->altera()) {
+            redirect(base_url().'index.php/usuario','refresh');
+        }
+    }
+    
+    public function exclui() {
+        $iId = $this->uri->segment(3);
+        $this->load->model('ModelUsuario');
+        if ($this->ModelUsuario->exclui(Array($iId))) {
+            redirect(base_url().'index.php/usuario','refresh');
+        }
     }
 }

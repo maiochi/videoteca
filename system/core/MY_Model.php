@@ -1,36 +1,78 @@
 <?php
-
-/*
- * @todo no método de alteração implementar uma alternativa pra setar todas as colunas da PK 
+/**
+ * Classe padrao do Modelo - teste alteração
+ * @package Estrutura
+ * @subpackage Model
+ * @author Diego Maiochi <diego@maiochi.eti.br>
+ * @since 29/12/2012
  */
-class MY_Model extends CI_Model {
+abstract class MY_Model extends CI_Model {
     
-    protected $tabela;
+    public $tabela = null;
+    public $pk = Array();
     
-    public function __construct() {
-        parent::__construct();
+   public function __construct() {
+       $this->setTabela();
+       $this->setPk(); 
+       parent::__construct();
     }
-
+    
+    abstract public function setTabela();
+    abstract public function setPk();
 
     /*
      * Método responsável por inserir os dados na tabela
      */
     public function insere($aDados) {
-        // Vamos verificar se foi setado o nome da tabela
-        if (!isset($this->tabela)) {
-            show_error('Não foi setado uma tabela padrão para o model <b>'. get_called_class().'</b>');
-        } else {
+        if ($this->trataDados()) {
             return $this->db->insert($this->tabela,$aDados);
+        } 
+    }
+    
+    /*
+     * Método responsável pela alteração do registro
+     */
+    public function altera() {
+        if ($this->trataDados()) {
+            $aWhere     = Array();
+            // Vamos buscar todas as informações do formulario
+            $aDadosForm = $this->input->post();       
+            // Vamos percorrer o array de PK para adicionar as condições da nossa alteração
+            foreach ($this->pk as $key => $sNomePk) {
+                // Verifica se foi passada a pk
+                if (isset($aDadosForm[$sNomePk])) {
+                    $aWhere[$sNomePk] = $aDadosForm[$sNomePk];
+                } else {
+                    show_error('Não foi definido as PK\'s da tabela');
+                    break;
+                }
+            }
+            // Vamos tirar do nosso array o botao enviar
+            unset($aDadosForm['enviar']);
+            return $this->db->update($this->tabela, $aDadosForm,$aWhere);
+        }
+    }
+    /**
+     * Método padrão para exclusão
+     * @param array $aPk - Valores da chave, deverão ser passados na ordem em que foi definida as PK 
+     *                      no método setPk do modelo
+     * @return object
+     */
+    public function exclui(Array $aPk) {
+        if ($this->trataDados()) {
+            $aWhere = array();
+            foreach ($aPk as $key => $xValor) {
+                $aWhere[$this->pk[$key]] = $xValor;
+            }
+            return $this->db->delete($this->tabela, $aWhere);
         }
     }
     
-    public function altera() {
-        $aDadosForm = $this->input->post();       
-        $this->db->where('usucodigo', $aDadosForm['usucodigo']);
-        return $this->db->update('tbusuario', $aDadosForm);
-    }
-    
-    public function exclui() {
-        
+    public function trataDados() {
+        if (!isset($this->tabela)) {
+            show_error('Não foi setado uma tabela padrão para o model <b>'. get_called_class().'</b>');
+        } else {
+            return true;
+        }
     }
 }

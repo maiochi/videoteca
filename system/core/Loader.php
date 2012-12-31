@@ -295,7 +295,6 @@ class CI_Loader {
 			{
 				load_class('Model', 'core');
 			}
-                        load_class('MY_Model', 'core','');
 
 			require_once($mod_path.'models/'.$path.$model.'.php');
 
