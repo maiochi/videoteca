@@ -26,7 +26,7 @@
  
 class CI_Jquery extends CI_Javascript {
 
-	var $_javascript_folder = 'js';
+	var $_javascript_folder = 'apllication/js';
 	var $jquery_code_for_load = array();
 	var $jquery_code_for_compile = array();
 	var $jquery_corner_active = FALSE;
@@ -82,6 +82,20 @@ class CI_Jquery extends CI_Javascript {
 	{
 		return $this->_add_event($element, $js, 'change');
 	}
+        
+        /**
+	 * Submit
+	 *
+	 * Outputs a jQuery change event
+	 *
+	 * @access	private
+	 * @param	string	The element to attach the event to
+	 * @param	string	The code to execute
+	 * @return	string
+	 */
+        function _submit($element = 'this', $js = '') {
+            return $this->_add_event($element, $js, 'submit');
+        }
 	
 	// --------------------------------------------------------------------
 	
@@ -921,7 +935,7 @@ class CI_Jquery extends CI_Javascript {
 
 		}
 
-		$event = "\n\t$(" . $this->_prep_element($element) . ").{$event}(function(){\n\t\t{$js}\n\t});\n";
+		$event = "\n\t$(" . $this->_prep_element($element) . ").{$event}(function(e){\n\t\t{$js}\n\t});\n";
 		$this->jquery_code_for_compile[] = $event;
 		return $event;
 	}

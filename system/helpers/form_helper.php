@@ -174,7 +174,7 @@ if ( ! function_exists('form_input'))
 {
 	function form_input($data = '', $value = '', $extra = '')
 	{
-		$defaults = array('type' => 'text', 'name' => (( ! is_array($data)) ? $data : ''), 'value' => $value);
+		$defaults = array('type' => 'text', 'name' => (( ! is_array($data)) ? $data : ''),'id' => (( ! is_array($data)) ? $data : ''), 'value' => $value);
 
 		return "<input "._parse_form_attributes($data, $defaults).$extra." />";
 	}
@@ -487,7 +487,7 @@ if ( ! function_exists('form_button'))
 {
 	function form_button($data = '', $content = '', $extra = '')
 	{
-		$defaults = array('name' => (( ! is_array($data)) ? $data : ''), 'type' => 'button');
+		$defaults = array('name' => (( ! is_array($data)) ? $data : ''),'id' => (( ! is_array($data)) ? $data : ''), 'type' => 'button');
 
 		if ( is_array($data) AND isset($data['content']))
 		{

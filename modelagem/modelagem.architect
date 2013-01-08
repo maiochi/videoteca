@@ -216,7 +216,7 @@
     <column id="COL58" populated="true" UUID="aaf6e12b-6b50-433f-9c3b-1a042eb9bb5b" autoIncrement="false" autoIncrementSequenceName="tbmenu_menordem_seq" defaultValue="" name="menordem" nullable="0" physicalName="menordem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL59" populated="true" UUID="5e670d4e-1da7-43a1-a250-651b0e7c97d3" autoIncrement="false" autoIncrementSequenceName="tbmenu_menid_seq" defaultValue="" name="Parent_menid" nullable="0" physicalName="Parent_menid" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL59" populated="true" UUID="5e670d4e-1da7-43a1-a250-651b0e7c97d3" autoIncrement="false" autoIncrementSequenceName="tbmenu_menid_seq_1" defaultValue="" name="menidpai" nullable="0" physicalName="menidpai" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -290,7 +290,7 @@
     <column id="COL79" populated="true" UUID="63a5b044-f79c-4cf1-86fa-fd046786fc41" autoIncrement="true" autoIncrementSequenceName="tbacesso_accid_seq" defaultValue="" name="accid" nullable="0" physicalName="accid" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL80" populated="true" UUID="20abe82d-ced0-4be9-9c73-bbf4f5daa25d" autoIncrement="false" autoIncrementSequenceName="tbusuario_usucodigo_seq" defaultValue="" name="usucodigo" nullable="0" physicalName="usucodigo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL80" populated="true" UUID="20abe82d-ced0-4be9-9c73-bbf4f5daa25d" autoIncrement="false" autoIncrementSequenceName="tbusuario_usucodigo_seq_1_1" defaultValue="" name="usucodigo" nullable="0" physicalName="usucodigo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL81" populated="true" UUID="dc14764e-e345-4760-bd1a-df1ae9d34a50" autoIncrement="false" autoIncrementSequenceName="tbacesso_accip_seq" defaultValue="" name="accip" nullable="0" physicalName="accip" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -338,10 +338,10 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="1.414213562373095" viewportX="0" viewportY="27" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="1.414213562373095" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="187" y="182" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB10" x="494" y="71" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB15" x="917" y="59" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>

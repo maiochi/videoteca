@@ -26,7 +26,7 @@
  */
 class CI_Javascript {
 
-	var $_javascript_location = 'js';
+	var $_javascript_location = 'application/js';
 
 	public function __construct($params = array())
 	{
@@ -592,6 +592,21 @@ class CI_Javascript {
 	{
 		return $this->js->_show($element, $speed, $callback);
 	}
+        
+        /**
+	 * Submit
+	 *
+	 * Outputs a javascript library show event
+	 *
+	 * @access	public
+	 * @param	string	- element
+	 * @param	string	- One of 'slow', 'normal', 'fast', or time in milliseconds
+	 * @param	string	- Javascript callback function
+	 * @return	string
+	 */
+        function submit($element = 'this', $js = '') {
+            return $this->js->_submit($element,$js);
+        }
 
 
 	// --------------------------------------------------------------------

@@ -55,7 +55,8 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array('database',
                                'session',
                                'auth',
-                               'form_validation');
+                               'form_validation',
+                               'javascript');
 
 
 /*
@@ -67,9 +68,7 @@ $autoload['libraries'] = array('database',
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url',
-                            'form',
-                            'funcao');
+$autoload['helper'] = array('url','form','funcao','html');
 
 
 /*

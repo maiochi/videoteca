@@ -1,0 +1,17 @@
+#area_form {
+    width       : 400px;
+    height      : 500px;
+    position    : absolute;
+    top         : 50%;
+    left        : 50%;
+    margin-top  : -250px;
+    margin-left : -200px;
+    z-index     : 501;
+    background-color: white;
+    border:1px solid #e3e3e3;
+}
+
+
+
+
+
